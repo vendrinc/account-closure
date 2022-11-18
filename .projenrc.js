@@ -5,12 +5,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
   name: 'account-closure',
-  repositoryUrl: 'https://github.com/shes.lora.reames/account-closure.git',
+  repositoryUrl: 'https://github.com/Blissfully/account-closure.git',
+  description: 'cdk construct for automating AWS account closure and dealing with the AWS close account quota',
 
-  // deps: [],                /* Runtime dependencies of this module. */
   deps: ['@aws-solutions-constructs/aws-eventbridge-stepfunctions'],
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
   devDeps: [
     'node@16',
   ],

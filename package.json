@@ -1,8 +1,9 @@
 {
   "name": "account-closure",
+  "description": "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shes.lora.reames/account-closure.git"
+    "url": "https://github.com/Blissfully/account-closure.git"
   },
   "scripts": {
     "build": "npx projen build",
