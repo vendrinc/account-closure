@@ -30,7 +30,7 @@
   },
   "author": {
     "name": "Lora Reames",
-    "email": "shes.lora.reames@gmail.com",
+    "email": "lora.reames@vendr.com",
     "organization": false
   },
   "devDependencies": {
@@ -51,6 +51,7 @@
     "jsii-docgen": "^7.0.152",
     "jsii-pacmak": "^1.71.0",
     "json-schema": "^0.4.0",
+    "node": "16",
     "npm-check-updates": "^16",
     "projen": "^0.65.26",
     "standard-version": "^9",
@@ -60,6 +61,9 @@
   "peerDependencies": {
     "aws-cdk-lib": "^2.1.0",
     "constructs": "^10.0.5"
+  },
+  "dependencies": {
+    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.27.0"
   },
   "keywords": [
     "cdk"
