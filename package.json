@@ -69,6 +69,9 @@
   "dependencies": {
     "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.27.0"
   },
+  "bundledDependencies": [
+    "@aws-solutions-constructs/aws-eventbridge-stepfunctions"
+  ],
   "keywords": [
     "cdk"
   ],

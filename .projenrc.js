@@ -9,7 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description:
     "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
 
-  deps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
+  bundledDeps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
   devDeps: ["node@16"],
   // packageName: undefined,  /* The "name" in package.json. */
   prettier: true,
