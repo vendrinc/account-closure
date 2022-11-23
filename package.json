@@ -39,7 +39,6 @@
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.1.0",
     "constructs": "10.0.5",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
@@ -63,11 +62,12 @@
     "typescript": "^4.9.3"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.1.0",
+    "aws-cdk-lib": "^2.37.1",
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.27.0"
+    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.27.0",
+    "aws-cdk-lib": "^2.51.1"
   },
   "bundledDependencies": [
     "@aws-solutions-constructs/aws-eventbridge-stepfunctions"
