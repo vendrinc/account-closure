@@ -125,9 +125,6 @@
           "method"
         ]
       }
-    ],
-    "semi": [
-      "never"
     ]
   },
   "overrides": [

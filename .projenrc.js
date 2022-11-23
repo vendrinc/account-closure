@@ -17,6 +17,5 @@ const project = new awscdk.AwsCdkConstructLibrary({
     projenCredentials: github.GithubCredentials.fromApp(),
   },
 })
-project.eslint.addRules({semi: ["never"]})
 project.prettier.settings.semi = false
 project.synth()
