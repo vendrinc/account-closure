@@ -1,5 +1,5 @@
 {
-  "name": "account-closure",
+  "name": "@blissfully/account-closure",
   "description": "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27",
-    "@types/node": "^14",
+    "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "constructs": "10.0.5",
@@ -75,6 +75,9 @@
   "keywords": [
     "cdk"
   ],
+  "engines": {
+    "node": ">= 16.18.1"
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.0",

@@ -5,6 +5,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: "2.37.1",
   defaultReleaseBranch: "main",
   name: "account-closure",
+  packageName: "@blissfully/account-closure",
+  minNodeVersion: "16.18.1",
   repositoryUrl: "https://github.com/Blissfully/account-closure.git",
   description:
     "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
@@ -17,5 +19,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     projenCredentials: github.GithubCredentials.fromApp(),
   },
 })
+project.eslint.addRules({ semi: 0 })
 project.prettier.settings.semi = false
 project.synth()

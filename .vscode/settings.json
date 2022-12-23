@@ -1,8 +1,11 @@
 {
 	"cSpell.words": [
+		"awscdk",
 		"backoff",
 		"Eventbridge",
 		"Paginationtoken",
+		"projen",
+		"resourcegroupstaggingapi",
 		"Stepfunctions"
 	]
 }
