@@ -28,8 +28,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
+      - name: Setup GitHub NPM Token
+        run: npm config set @blissfully:registry=https://npm.pkg.github.com/ && npm config set @vendr:registry=https://npm.pkg.github.com/ && npm config set //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.GH_PACKAGE_READ_TOKEN }}
       - name: Install dependencies
-        run: yarn install --check-files --frozen-lockfile
+        run: npm ci
       - name: release
         run: npx projen release
       - name: Check for new commits
@@ -80,6 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
     if: needs.release.outputs.latest_commit == github.sha
     steps:
       - uses: actions/setup-node@v3
@@ -96,7 +101,7 @@ jobs:
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create js artifact
         run: cd .repo && npx projen package:js
       - name: Collect js Artifact
@@ -104,6 +109,6 @@ jobs:
       - name: Release
         env:
           NPM_DIST_TAG: latest
-          NPM_REGISTRY: registry.npmjs.org
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_REGISTRY: npm.pkg.github.com
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx -p publib@latest publib-npm

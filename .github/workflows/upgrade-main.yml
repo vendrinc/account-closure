@@ -22,8 +22,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
+      - name: Setup GitHub NPM Token
+        run: npm config set @blissfully:registry=https://npm.pkg.github.com/ && npm config set @vendr:registry=https://npm.pkg.github.com/ && npm config set //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.GH_PACKAGE_READ_TOKEN }}
       - name: Install dependencies
-        run: yarn install --check-files --frozen-lockfile
+        run: npm ci
       - name: Upgrade dependencies
         run: npx projen upgrade
       - name: Find mutations

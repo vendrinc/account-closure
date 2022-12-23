@@ -23,10 +23,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
+      - name: Setup GitHub NPM Token
+        run: npm config set @blissfully:registry=https://npm.pkg.github.com/ && npm config set @vendr:registry=https://npm.pkg.github.com/ && npm config set //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.GH_PACKAGE_READ_TOKEN }}
       - name: Install dependencies
-        run: yarn install --check-files
+        run: npm install
       - name: build
         run: npx projen build
+      - name: Run tests
+        id: run_tests
+        run: yarn test
+      - name: Check Coverage
+        id: check_coverage
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Find mutations
         id: self_mutation
         run: |-
@@ -104,10 +116,14 @@ jobs:
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
+      - name: Setup GitHub NPM Token
+        run: npm config set @blissfully:registry=https://npm.pkg.github.com/ && npm config set @vendr:registry=https://npm.pkg.github.com/ && npm config set //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+        env:
+          NPM_TOKEN: ${{ secrets.GH_PACKAGE_READ_TOKEN }}
       - name: Prepare Repository
         run: mv dist .repo
       - name: Install Dependencies
-        run: cd .repo && yarn install --check-files --frozen-lockfile
+        run: cd .repo && npm ci
       - name: Create js artifact
         run: cd .repo && npx projen package:js
       - name: Collect js Artifact

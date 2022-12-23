@@ -1,7 +1,7 @@
-import { EventbridgeToStepfunctions } from "@aws-solutions-constructs/aws-eventbridge-stepfunctions"
-import { Duration } from "aws-cdk-lib"
-import { Schedule } from "aws-cdk-lib/aws-events"
-import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam"
+import { EventbridgeToStepfunctions } from "@aws-solutions-constructs/aws-eventbridge-stepfunctions";
+import { Duration } from "aws-cdk-lib";
+import { Schedule } from "aws-cdk-lib/aws-events";
+import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import {
   Choice,
   Map,
@@ -10,13 +10,13 @@ import {
   Succeed,
   Condition,
   JsonPath,
-} from "aws-cdk-lib/aws-stepfunctions"
-import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks"
-import { Construct } from "constructs"
+} from "aws-cdk-lib/aws-stepfunctions";
+import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks";
+import { Construct } from "constructs";
 
 export class AccountClosureStepFunction extends Construct {
   constructor(scope: Construct, id: string) {
-    super(scope, id)
+    super(scope, id);
 
     const describeAccount = new CallAwsService(this, "describeAccount", {
       comment: "Describe Account",
@@ -36,14 +36,14 @@ export class AccountClosureStepFunction extends Construct {
       {
         errors: ["Organizations.AccountNotFoundException"],
       }
-    )
+    );
 
     const forEachAccountTagged = new Map(this, "forEachAccountTagged", {
       comment: "For each account tagged REQUESTED",
       itemsPath: "$.ResourceTagMappingList",
       maxConcurrency: 1,
       resultPath: "$._MapResult",
-    })
+    });
 
     const findAccounts = new CallAwsService(this, "findAccounts", {
       comment: "Find accounts tagged for closure",
@@ -68,7 +68,7 @@ export class AccountClosureStepFunction extends Construct {
           resources: ["*"],
         }),
       ],
-    })
+    });
 
     const tagAcknowledged = new CallAwsService(this, "tagAcknowledged", {
       service: "organizations",
@@ -83,7 +83,7 @@ export class AccountClosureStepFunction extends Construct {
         ],
       },
       iamResources: ["*"],
-    })
+    });
 
     const closeAccount = new CallAwsService(this, "closeAccount", {
       service: "organizations",
@@ -101,7 +101,7 @@ export class AccountClosureStepFunction extends Construct {
       })
       .addCatch(new Succeed(this, "AccountClosureLimitReached"), {
         errors: ["Organizations.ConstraintViolationException"],
-      })
+      });
 
     const definition = new Pass(this, "Set empty pagination token", {
       result: Result.fromObject({ PaginationToken: "" }),
@@ -126,7 +126,7 @@ export class AccountClosureStepFunction extends Construct {
             new Succeed(this, "Done Paginating")
           )
           .otherwise(findAccounts)
-      )
+      );
 
     new EventbridgeToStepfunctions(this, "AccountClosureStepFunction", {
       stateMachineProps: {
@@ -135,6 +135,6 @@ export class AccountClosureStepFunction extends Construct {
       eventRuleProps: {
         schedule: Schedule.rate(Duration.hours(1)),
       },
-    })
+    });
   }
 }

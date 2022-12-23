@@ -21,6 +21,10 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-lib",
+      "type": "build"
+    },
+    {
       "name": "constructs",
       "version": "10.0.5",
       "type": "build"
@@ -109,12 +113,21 @@
       "type": "build"
     },
     {
+      "name": "ts-node",
+      "type": "build"
+    },
+    {
       "name": "typescript",
       "type": "build"
     },
     {
       "name": "@aws-solutions-constructs/aws-eventbridge-stepfunctions",
       "type": "bundled"
+    },
+    {
+      "name": "@types/babel__traverse",
+      "version": "7.18.2",
+      "type": "override"
     },
     {
       "name": "@types/prettier",
@@ -130,6 +143,10 @@
       "name": "constructs",
       "version": "^10.0.5",
       "type": "peer"
+    },
+    {
+      "name": "@blissfully/projen",
+      "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
