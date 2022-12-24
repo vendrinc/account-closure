@@ -1,3 +1,4 @@
+import { javascript } from "projen";
 import { VendrCdkConstruct } from "@blissfully/projen";
 
 const project = new VendrCdkConstruct({
@@ -8,6 +9,7 @@ const project = new VendrCdkConstruct({
   name: "account-closure",
   packageName: "@blissfully/account-closure",
   minNodeVersion: "16.18.1",
+  npmAccess: javascript.NpmAccess.PUBLIC,
   repositoryUrl: "https://github.com/Blissfully/account-closure.git",
   description:
     "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
