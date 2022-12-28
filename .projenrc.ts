@@ -1,5 +1,5 @@
-import { javascript } from "projen";
 import { VendrCdkConstruct } from "@blissfully/projen";
+import { javascript } from "projen";
 
 const project = new VendrCdkConstruct({
   author: "Lora Reames",
