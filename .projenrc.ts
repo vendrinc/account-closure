@@ -15,9 +15,9 @@ const project = new VendrCdkConstruct({
   npmRegistryUrl: "https://npm.pkg.github.com",
   description:
     "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
-  deps: ["aws-cdk-lib", "@blissfully/projen"],
+  deps: ["aws-cdk-lib"],
   bundledDeps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
-  devDeps: ["node@16", "aws-cdk-lib"],
+  devDeps: ["node@16", "aws-cdk-lib", "@blissfully/projen"],
   prettier: true,
   eslint: true,
   releaseToNpm: false,

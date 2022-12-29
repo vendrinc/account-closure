@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@blissfully/projen",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "^27",
       "type": "build"
@@ -143,10 +147,6 @@
       "name": "constructs",
       "version": "^10.0.5",
       "type": "peer"
-    },
-    {
-      "name": "@blissfully/projen",
-      "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
