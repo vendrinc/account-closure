@@ -10,6 +10,7 @@ import {
   Succeed,
   Condition,
   JsonPath,
+  DefinitionBody,
 } from "aws-cdk-lib/aws-stepfunctions";
 import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Construct } from "constructs";
@@ -130,7 +131,7 @@ export class AccountClosureStepFunction extends Construct {
 
     new EventbridgeToStepfunctions(this, "AccountClosureStepFunction", {
       stateMachineProps: {
-        definition,
+        definitionBody: DefinitionBody.fromChainable(definition),
       },
       eventRuleProps: {
         schedule: Schedule.rate(Duration.hours(1)),
