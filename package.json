@@ -41,36 +41,36 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@vendrinc/projen": "0.0.90",
-    "aws-cdk-lib": "^2.51.1",
+    "aws-cdk-lib": "^2.96.2",
     "constructs": "10.0.5",
     "eslint": "^8",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-node": "^0.3.6",
-    "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27",
     "jest-junit": "^13",
-    "jsii": "^1.71.0",
-    "jsii-diff": "^1.71.0",
-    "jsii-docgen": "^7.0.152",
-    "jsii-pacmak": "^1.71.0",
+    "jsii": "^1.88.0",
+    "jsii-diff": "^1.88.0",
+    "jsii-docgen": "^7.2.9",
+    "jsii-pacmak": "^1.88.0",
     "node": "16",
     "npm-check-updates": "^16",
-    "prettier": "^2.7.1",
-    "projen": "^0.65.26",
+    "prettier": "^2.8.8",
+    "projen": "^0.73.25",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.37.1",
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.27.0",
-    "aws-cdk-lib": "^2.51.1"
+    "@aws-solutions-constructs/aws-eventbridge-stepfunctions": "^2.44.0",
+    "aws-cdk-lib": "^2.96.2"
   },
   "bundledDependencies": [
     "@aws-solutions-constructs/aws-eventbridge-stepfunctions"
