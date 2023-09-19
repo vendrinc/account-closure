@@ -1,9 +1,9 @@
 {
-  "name": "@blissfully/account-closure",
+  "name": "@vendrinc/account-closure",
   "description": "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blissfully/account-closure"
+    "url": "https://github.com/vendrinc/account-closure"
   },
   "scripts": {
     "build": "npx projen build",
@@ -17,6 +17,7 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
+    "package:js": "npx projen package:js",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -35,11 +36,11 @@
     "organization": false
   },
   "devDependencies": {
-    "@blissfully/projen": "^0.0.55",
     "@types/jest": "^27",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
+    "@vendrinc/projen": "0.0.90",
     "aws-cdk-lib": "^2.51.1",
     "constructs": "10.0.5",
     "eslint": "^8",
@@ -54,7 +55,6 @@
     "jsii-diff": "^1.71.0",
     "jsii-docgen": "^7.0.152",
     "jsii-pacmak": "^1.71.0",
-    "json-schema": "^0.4.0",
     "node": "16",
     "npm-check-updates": "^16",
     "prettier": "^2.7.1",

@@ -18,15 +18,19 @@
     "AWS_PROFILE": "dev"
   },
   "containerUser": "node",
-  "extensions": [
-    "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "vscode-icons-team.vscode-icons",
-    "AmazonWebServices.aws-toolkit-vscode",
-    "MarkMcCulloh.vscode-projen",
-    "cvent.vscode-readonly-decorations",
-    "github.vscode-pull-request-github"
-  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "vscode-icons-team.vscode-icons",
+        "AmazonWebServices.aws-toolkit-vscode",
+        "MarkMcCulloh.vscode-projen",
+        "cvent.vscode-readonly-decorations",
+        "github.vscode-pull-request-github"
+      ]
+    }
+  },
   "shutdownAction": "stopContainer",
   "features": {
     "ghcr.io/devcontainers/features/sshd:1": {
