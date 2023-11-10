@@ -81,6 +81,10 @@ export class AccountClosureStepFunction extends Construct {
             Key: "organizations:account-closure",
             Value: "ACKNOWLEDGED",
           },
+          {
+            Key: "organizations:account-closure:acknowledged-date",
+            Value: JsonPath.executionStartTime,
+          },
         ],
       },
       iamResources: ["*"],
