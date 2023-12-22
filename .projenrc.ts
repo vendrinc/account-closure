@@ -4,7 +4,8 @@ import { javascript } from "projen";
 const project = new VendrCdkConstruct({
   author: "Lora Reames",
   authorAddress: "lora.reames@vendr.com",
-  cdkVersion: "2.96.2",
+  cdkVersion: "2.114.1",
+  constructsVersion: "10.3.0",
   defaultReleaseBranch: "main",
   name: "account-closure",
   packageName: "@vendrinc/account-closure",
@@ -19,9 +20,9 @@ const project = new VendrCdkConstruct({
   devDeps: [
     "node@18",
     "@types/node@18",
-    "aws-cdk-lib@2.96.2",
-    "@vendrinc/projen@0.0.92",
-    "projen@0.73.26",
+    "aws-cdk-lib@2.114.1",
+    "@vendrinc/projen@0.0.97",
+    // "projen@0.73.26",
   ],
   prettier: true,
   eslint: true,
