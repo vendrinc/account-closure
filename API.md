@@ -10,13 +10,14 @@
 ```typescript
 import { AccountClosureStepFunction } from '@vendrinc/account-closure'
 
-new AccountClosureStepFunction(scope: Construct, id: string)
+new AccountClosureStepFunction(scope: Construct, id: string, props: AccountClosureStepFunctionProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@vendrinc/account-closure.AccountClosureStepFunction.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#@vendrinc/account-closure.AccountClosureStepFunction.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunction.Initializer.parameter.props">props</a></code> | <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps">AccountClosureStepFunctionProps</a></code> | *No description.* |
 
 ---
 
@@ -29,6 +30,12 @@ new AccountClosureStepFunction(scope: Construct, id: string)
 ##### `id`<sup>Required</sup> <a name="id" id="@vendrinc/account-closure.AccountClosureStepFunction.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@vendrinc/account-closure.AccountClosureStepFunction.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps">AccountClosureStepFunctionProps</a>
 
 ---
 
@@ -56,7 +63,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### ~~`isConstruct`~~ <a name="isConstruct" id="@vendrinc/account-closure.AccountClosureStepFunction.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@vendrinc/account-closure.AccountClosureStepFunction.isConstruct"></a>
 
 ```typescript
 import { AccountClosureStepFunction } from '@vendrinc/account-closure'
@@ -65,6 +72,20 @@ AccountClosureStepFunction.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@vendrinc/account-closure.AccountClosureStepFunction.isConstruct.parameter.x"></a>
 
@@ -95,6 +116,35 @@ The tree node.
 ---
 
 
+## Structs <a name="Structs" id="Structs"></a>
+
+### AccountClosureStepFunctionProps <a name="AccountClosureStepFunctionProps" id="@vendrinc/account-closure.AccountClosureStepFunctionProps"></a>
+
+#### Initializer <a name="Initializer" id="@vendrinc/account-closure.AccountClosureStepFunctionProps.Initializer"></a>
+
+```typescript
+import { AccountClosureStepFunctionProps } from '@vendrinc/account-closure'
+
+const accountClosureStepFunctionProps: AccountClosureStepFunctionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privledgedRoleArn">privledgedRoleArn</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `privledgedRoleArn`<sup>Required</sup> <a name="privledgedRoleArn" id="@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privledgedRoleArn"></a>
+
+```typescript
+public readonly privledgedRoleArn: string;
+```
+
+- *Type:* string
+
+---
 
 
 
