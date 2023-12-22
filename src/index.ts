@@ -1,7 +1,7 @@
 import { EventbridgeToStepfunctions } from "@aws-solutions-constructs/aws-eventbridge-stepfunctions";
 import { Duration } from "aws-cdk-lib";
 import { Schedule } from "aws-cdk-lib/aws-events";
-import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
+import { Effect, PolicyStatement, Role } from "aws-cdk-lib/aws-iam";
 import {
   Choice,
   Map,
@@ -11,15 +11,27 @@ import {
   Condition,
   JsonPath,
   DefinitionBody,
+  TaskRole,
 } from "aws-cdk-lib/aws-stepfunctions";
 import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Construct } from "constructs";
 
+export interface AccountClosureStepFunctionProps {
+  readonly privledgedRoleArn: string; // TODO provide example role for repo with all required permissions
+}
 export class AccountClosureStepFunction extends Construct {
-  constructor(scope: Construct, id: string) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props: AccountClosureStepFunctionProps
+  ) {
     super(scope, id);
+    const privledgedRole = TaskRole.fromRole(
+      Role.fromRoleArn(this, "PrivledgedRole", props.privledgedRoleArn)
+    );
 
     const describeAccount = new CallAwsService(this, "describeAccount", {
+      credentials: { role: privledgedRole },
       comment: "Describe Account",
       service: "organizations",
       action: "describeAccount",
@@ -47,6 +59,7 @@ export class AccountClosureStepFunction extends Construct {
     });
 
     const findAccounts = new CallAwsService(this, "findAccounts", {
+      credentials: { role: privledgedRole },
       comment: "Find accounts tagged for closure",
       service: "resourcegroupstaggingapi",
       action: "getResources",
@@ -72,6 +85,7 @@ export class AccountClosureStepFunction extends Construct {
     });
 
     const tagAcknowledged = new CallAwsService(this, "tagAcknowledged", {
+      credentials: { role: privledgedRole },
       service: "organizations",
       action: "tagResource",
       parameters: {
@@ -81,12 +95,17 @@ export class AccountClosureStepFunction extends Construct {
             Key: "organizations:account-closure",
             Value: "ACKNOWLEDGED",
           },
+          {
+            Key: "organizations:account-closure:acknowledged-date",
+            Value: JsonPath.executionStartTime,
+          },
         ],
       },
       iamResources: ["*"],
     });
 
     const closeAccount = new CallAwsService(this, "closeAccount", {
+      credentials: { role: privledgedRole },
       service: "organizations",
       action: "closeAccount",
       iamResources: ["arn:aws:organizations::*:account/o-*/*"],

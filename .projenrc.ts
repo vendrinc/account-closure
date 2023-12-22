@@ -4,7 +4,8 @@ import { javascript } from "projen";
 const project = new VendrCdkConstruct({
   author: "Lora Reames",
   authorAddress: "lora.reames@vendr.com",
-  cdkVersion: "2.96.2",
+  cdkVersion: "2.114.1",
+  constructsVersion: "10.3.0",
   defaultReleaseBranch: "main",
   name: "account-closure",
   packageName: "@vendrinc/account-closure",
@@ -14,9 +15,15 @@ const project = new VendrCdkConstruct({
   npmRegistryUrl: "https://npm.pkg.github.com",
   description:
     "cdk construct for automating AWS account closure and dealing with the AWS close account quota",
-  deps: ["aws-cdk-lib"],
-  bundledDeps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
-  devDeps: ["node@18", "aws-cdk-lib", "@vendrinc/projen"],
+  // bundledDeps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
+  deps: ["@aws-solutions-constructs/aws-eventbridge-stepfunctions"],
+  devDeps: [
+    "node@18",
+    "@types/node@18",
+    "aws-cdk-lib@2.114.1",
+    "@vendrinc/projen@0.0.97",
+    // "projen@0.73.26",
+  ],
   prettier: true,
   eslint: true,
 });

@@ -12,7 +12,10 @@ describe("Account Closure Construct", () => {
       super(scope, id);
       new AccountClosureStepFunction(
         this,
-        "AccountClosureStepFunctionConstruct"
+        "AccountClosureStepFunctionConstruct",
+        {
+          privledgedRoleArn: "arn:aws:iam::123456789012:role/PrivledgedRole",
+        }
       );
     }
   }
