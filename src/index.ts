@@ -17,7 +17,7 @@ import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Construct } from "constructs";
 
 export interface AccountClosureStepFunctionProps {
-  readonly privledgedRoleArn: string; // TODO provide example role for repo with all required permissions
+  readonly privilegedRoleArn: string; // TODO provide example role for repo with all required permissions
 }
 export class AccountClosureStepFunction extends Construct {
   constructor(
@@ -26,12 +26,12 @@ export class AccountClosureStepFunction extends Construct {
     props: AccountClosureStepFunctionProps
   ) {
     super(scope, id);
-    const privledgedRole = TaskRole.fromRole(
-      Role.fromRoleArn(this, "PrivledgedRole", props.privledgedRoleArn)
+    const privilegedRole = TaskRole.fromRole(
+      Role.fromRoleArn(this, "PrivilegedRole", props.privilegedRoleArn)
     );
 
     const describeAccount = new CallAwsService(this, "describeAccount", {
-      credentials: { role: privledgedRole },
+      credentials: { role: privilegedRole },
       comment: "Describe Account",
       service: "organizations",
       action: "describeAccount",
@@ -59,7 +59,7 @@ export class AccountClosureStepFunction extends Construct {
     });
 
     const findAccounts = new CallAwsService(this, "findAccounts", {
-      credentials: { role: privledgedRole },
+      credentials: { role: privilegedRole },
       comment: "Find accounts tagged for closure",
       service: "resourcegroupstaggingapi",
       action: "getResources",
@@ -85,7 +85,7 @@ export class AccountClosureStepFunction extends Construct {
     });
 
     const tagAcknowledged = new CallAwsService(this, "tagAcknowledged", {
-      credentials: { role: privledgedRole },
+      credentials: { role: privilegedRole },
       service: "organizations",
       action: "tagResource",
       parameters: {
@@ -105,7 +105,7 @@ export class AccountClosureStepFunction extends Construct {
     });
 
     const closeAccount = new CallAwsService(this, "closeAccount", {
-      credentials: { role: privledgedRole },
+      credentials: { role: privilegedRole },
       service: "organizations",
       action: "closeAccount",
       iamResources: ["arn:aws:organizations::*:account/o-*/*"],
