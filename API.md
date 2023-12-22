@@ -132,14 +132,14 @@ const accountClosureStepFunctionProps: AccountClosureStepFunctionProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privledgedRoleArn">privledgedRoleArn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privilegedRoleArn">privilegedRoleArn</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `privledgedRoleArn`<sup>Required</sup> <a name="privledgedRoleArn" id="@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privledgedRoleArn"></a>
+##### `privilegedRoleArn`<sup>Required</sup> <a name="privilegedRoleArn" id="@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privilegedRoleArn"></a>
 
 ```typescript
-public readonly privledgedRoleArn: string;
+public readonly privilegedRoleArn: string;
 ```
 
 - *Type:* string

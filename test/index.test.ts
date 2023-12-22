@@ -14,7 +14,7 @@ describe("Account Closure Construct", () => {
         this,
         "AccountClosureStepFunctionConstruct",
         {
-          privledgedRoleArn: "arn:aws:iam::123456789012:role/PrivledgedRole",
+          privilegedRoleArn: "arn:aws:iam::123456789012:role/PrivilegedRole",
         }
       );
     }
