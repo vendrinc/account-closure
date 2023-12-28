@@ -17,7 +17,10 @@ import { CallAwsService } from "aws-cdk-lib/aws-stepfunctions-tasks";
 import { Construct } from "constructs";
 
 export interface AccountClosureStepFunctionProps {
+  /** Arn of privledged role to be assumed by the stepfunction when closing accounts */
   readonly privilegedRoleArn: string; // TODO provide example role for repo with all required permissions
+  /** Custom schedule for the event rule @default 1 day */
+  readonly schedule?: Schedule;
 }
 export class AccountClosureStepFunction extends Construct {
   constructor(
@@ -153,7 +156,7 @@ export class AccountClosureStepFunction extends Construct {
         definitionBody: DefinitionBody.fromChainable(definition),
       },
       eventRuleProps: {
-        schedule: Schedule.rate(Duration.hours(1)),
+        schedule: props.schedule ?? Schedule.rate(Duration.days(1)),
       },
     });
   }

@@ -132,7 +132,8 @@ const accountClosureStepFunctionProps: AccountClosureStepFunctionProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privilegedRoleArn">privilegedRoleArn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.privilegedRoleArn">privilegedRoleArn</a></code> | <code>string</code> | Arn of privledged role to be assumed by the stepfunction when closing accounts. |
+| <code><a href="#@vendrinc/account-closure.AccountClosureStepFunctionProps.property.schedule">schedule</a></code> | <code>aws-cdk-lib.aws_events.Schedule</code> | Custom schedule for the event rule @default 1 day. |
 
 ---
 
@@ -143,6 +144,20 @@ public readonly privilegedRoleArn: string;
 ```
 
 - *Type:* string
+
+Arn of privledged role to be assumed by the stepfunction when closing accounts.
+
+---
+
+##### `schedule`<sup>Optional</sup> <a name="schedule" id="@vendrinc/account-closure.AccountClosureStepFunctionProps.property.schedule"></a>
+
+```typescript
+public readonly schedule: Schedule;
+```
+
+- *Type:* aws-cdk-lib.aws_events.Schedule
+
+Custom schedule for the event rule @default 1 day.
 
 ---
 
